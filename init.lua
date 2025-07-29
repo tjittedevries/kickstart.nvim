@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -261,10 +261,7 @@ require('lazy').setup({
     ---@module 'oil'
     ---@type oil.SetupOpts
     opts = {},
-    -- Optional dependencies
     dependencies = { { 'echasnovski/mini.icons', opts = {} } },
-    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
-    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
     lazy = false,
   },
 
@@ -738,17 +735,16 @@ require('lazy').setup({
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
         automatic_installation = false,
-        -- automatic_enable = {},
-        -- handlers = {
-        --   function(server_name)
-        --     local server = servers[server_name] or {}
-        --     -- This handles overriding only values explicitly passed
-        --     -- by the server configuration above. Useful when disabling
-        --     -- certain features of an LSP (for example, turning off formatting for ts_ls)
-        --     server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-        --     require('lspconfig')[server_name].setup(server)
-        --   end,
-        -- },
+        handlers = {
+          function(server_name)
+            local server = servers[server_name] or {}
+            -- This handles overriding only values explicitly passed
+            -- by the server configuration above. Useful when disabling
+            -- certain features of an LSP (for example, turning off formatting for ts_ls)
+            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            require('lspconfig')[server_name].setup(server)
+          end,
+        },
       }
 
       local vue_language_server_path = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server'
