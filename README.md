@@ -1,5 +1,18 @@
 # kickstart.nvim
 
+## Notes
+
+First remove old files:
+
+```
+rm -rf ~/.local/share/nvim
+rm -rf ~/.local/state/nvim
+rm -rf ~/.cache/nvim
+```
+
+then start nvim and wait for everything to download and install.
+
+
 ## Introduction
 
 A starting point for Neovim that is:
