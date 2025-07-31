@@ -770,6 +770,10 @@ require('lazy').setup({
         eslint = {},
 
         ts_ls = {},
+
+        stylelint_lsp = {
+          filetypes = { 'css', 'scss' },
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -863,18 +867,23 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = {
+          c = true,
+          cpp = true,
+        }
         if disable_filetypes[vim.bo[bufnr].filetype] then
-          return nil
+          return {}
         else
           return {
-            timeout_ms = 500,
+            timeout_ms = 2000,
             lsp_format = 'fallback',
           }
         end
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        css = { 'stylelint', lsp_format = 'fallback' },
+        scss = { 'stylelint', lsp_format = 'fallback' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -1079,6 +1088,7 @@ require('lazy').setup({
         'markdown',
         'markdown_inline',
         'query',
+        'scss',
         'typescript',
         'vim',
         'vimdoc',
@@ -1150,6 +1160,3 @@ require('lazy').setup({
     },
   },
 })
-
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
