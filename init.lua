@@ -42,6 +42,8 @@ rtp:prepend(lazypath)
 require('lazy').setup({
   'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
 
+  { 'dmmulroy/ts-error-translator.nvim' },
+
   require 'custom/lazy/autotag',
   require 'custom/lazy/flash',
   require 'custom/lazy/gitsign',
@@ -83,7 +85,8 @@ require('lazy').setup({
   },
 })
 
-require('nvim-treesitter.install').compilers = { 'gcc-15' }
+-- require('nvim-treesitter.install').compilers = { 'gcc-15' }
+require('ts-error-translator').setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
