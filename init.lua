@@ -46,14 +46,15 @@ require('lazy').setup({
   require 'custom/lazy/flash',
   require 'custom/lazy/gitsign',
   require 'custom/lazy/lazygit',
+  require 'custom/lazy/mini',
+  -- require 'custom/lazy/neorg',
   require 'custom/lazy/oil',
   require 'custom/lazy/telescope',
-  require 'custom/lazy/trouble',
-  require 'custom/lazy/which-key',
   require 'custom/lazy/theme',
   require 'custom/lazy/todo-comments',
-  require 'custom/lazy/mini',
   require 'custom/lazy/treesitter',
+  require 'custom/lazy/trouble',
+  require 'custom/lazy/which-key',
 
   -- LSP Plugins
   require 'custom/lazy/lazydev',
@@ -81,6 +82,8 @@ require('lazy').setup({
     },
   },
 })
+
+require('nvim-treesitter.install').compilers = { 'gcc-15' }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

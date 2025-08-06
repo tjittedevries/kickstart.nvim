@@ -1,5 +1,10 @@
 # kickstart.nvim
 
+
+## Neorg
+
+CC=/opt/homebrew/bin/gcc-15 nvim -c "TSInstallSync norg"
+
 ## Notes
 
 First remove old files:
