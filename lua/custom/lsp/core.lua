@@ -178,6 +178,8 @@ return {
       -- ts_ls = {},
       --
 
+      cssls = {},
+
       lua_ls = {
         -- cmd = { ... },
         -- filetypes = { ... },
